@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "plain",
+          "foreground": "#DC477D",
+          "template": " {{ if .WSL }}WSL at {{ end }}{{.Icon}}"
+        },
+        {
+          "type": "session",
+          "style": "plain",
+          "foreground": "#EC585D",
+          "template": " <#949cbb>[</> {{ .UserName }}@{{ .HostName }} <#949cbb>]</>"
+        },
+        {
+          "type": "shell",
+          "style": "plain",
+          "foreground": "#EC585D",
+          "properties": {
+            "mapped_shell_names": {
+              "pwsh": " \uf925",
+              "zsh": " \ue778 "
+            }
+          },
+          "template": "<#949cbb>--[</>{{ .Name }}<#949cbb>]</>"
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "#FFEC6E",
+          "properties": {
+            "folder_icon": "\uf115",
+            "style": "mixed"
+          },
+          "template": "<#949cbb>--[</> {{ .Path }} <#949cbb>]</>"
+        },
+        {
+          "type": "kubectl",
+          "style": "plain",
+          "foreground": "#63D0FF",
+          "template": "<#949cbb>--[</> \ufd31 {{.Context}} :: {{if .Namespace}}{{.Namespace}}{{else}}default{{end}} <#949cbb>]</>"
+        },
+        {
+          "type": "terraform",
+          "style": "plain",
+          "foreground": "#844FBA",
+          "properties": {
+            "fetch_version": true
+          },
+          "template": "<#949cbb>--[</> \ufa08 {{ .WorkspaceName }}{{ if .Version }} {{ .Version }}{{ end }} <#949cbb>]</>"
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "#62D4DC",
+          "properties": {
+            "branch_icon": "",
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "template": "  {{ .HEAD }} {{ .BranchStatus }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0}} \uf692 {{ .StashCount }}{{ end }}{{ if gt .WorktreeCount 0}} \uf1bb {{ .WorktreeCount }}{{ end }}"
+        }
+	],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "foreground": "#DC477D",
+          "style": "plain",
+          "template": " \ufd31"
+        }
+      ],
+      "newline": true,
+      "type":"prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 2
+}

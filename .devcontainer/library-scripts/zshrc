@@ -1,0 +1,9 @@
+# AUTOCOMPLETE
+autoload -Uz compinit
+compinit 
+terraform -install-autocomplete
+source <(helm completion zsh)
+source <(kubectl completion zsh)
+
+# OH-MY-POSH THEME
+eval "$(oh-my-posh init zsh --config ~/.poshthemes/standard.omp.json)"
